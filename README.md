@@ -2,10 +2,10 @@
 
 - [Microcontroller](#microcontroller)
 - [Embedded design](#embedded-design)
-  - [Interrupts](#interrupts) 
-- [Design of measuring chain](#design-of-measuring-chain)
-- [ASSD](#assd)
-- [DCS](#dcs)
+  - [Interrupts](#interrupts)
+  - [Programs](#programs)
+  - [Other microcontroller features](#other-microcontroller-features)
+- [Basic elements of microcontrollers](#basic-elements-of-microcontrollers)
 
 
 
@@ -25,7 +25,46 @@
 
 ## Embedded design
 - A microcontroller can be considered a self-contained system with a processor, memory and peripherals and can be used as an **embedded system**.
+- Embedded systems often use **event-driven architecture (EDA) to handle interactions and processes efficiently.**
+- Embedded systems often use **interrupt-driven programming as a core part of their event-driven architecture.**
+- EDA implementation in Embedded Systems:
+  - **Interrupts**
+  - **Interrupt Service Routines (ISRs)**
+  - **Event Queues**:
+    - Some embedded systems use event queues to manage multiple events, ensuring they are processed in a **prioritized and orderly fashion**.  
 
  ### Interrupts
- - 
+ - Microcontrollers must provide **real-time (predictable, though not necessarily fast) response to events** in the embedded system they are controlling.
+ - When certain events occur, an interrupt system can signal the processor **to suspend processing the current instruction sequence and to begin an interrupt service routine (ISR, or "interrupt handler")** which will perform any processing required based on the source of the interrupt, before returning to the original instruction sequence.
+ - Possible interrupt sources are **device-dependent** and often include events such as an **internal timer overflow, completing an analog-to-digital conversion, a logic-level change on an input**
+ - Interrupts may also **wake a microcontroller from a low-power sleep state** where the processor is halted until required to do something by a **peripheral event.**
+
+### Programs
+- Typically microcontroller programs must fit in the **available on-chip memory**, since it would be costly to provide a system with external, expandable memory.
+- Compilers and assemblers are used to convert both **high-level and assembly language code into a compact machine code** for storage in the microcontroller's memory.
+
+
+### Other microcontroller features
+- Microcontrollers usually contain from several to dozens of **general purpose input/output pins (GPIO)**.
+- **GPIO pins are software configurable** to either an input or an output state.
+- A less common feature on some microcontrollers is a **digital-to-analog converter (DAC)** that allows the processor to output **analog signals or voltage levels.**
+- A dedicated **pulse-width modulation (PWM) block** makes it possible for the CPU to control power converters, resistive loads, motors, etc., **without using many CPU resources in tight timer loops.**
+- A **universal asynchronous receiver/transmitter (UART) block)**  makes it possible to **receive and transmit data over a serial line with very little load on the CPU.**
+- Dedicated **on-chip hardware** also often includes capabilities to communicate with other devices (chips) in digital formats such as **Inter-Integrated Circuit (I²C)**, **Serial Peripheral Interface (SPI), Universal Serial Bus (USB), and Ethernet.**
+
+
+## Basic elements of microcontrollers
+- Microcontrollers may not implement an external address or data bus as they integrate RAM and non-volatile memory on the same chip as the CPU.
+- **A microcontroller is a single integrated circuit**, commonly with the following features:
+  - central processing unit – ranging from small and simple 4-bit processors to complex 32-bit or 64-bit processors
+  - volatile memory (RAM) for data storage
+  - ROM, EPROM, EEPROM or Flash memory for program and operating parameter storage
+  - serial input/output such as serial ports (UARTs)
+  - other serial communications interfaces like I²C, Serial Peripheral Interface and Controller Area Network for system interconnect
+  - peripherals such as timers, event counters, PWM generators, and watchdog
+  - clock generator – often an oscillator for a quartz timing crystal, resonator or RC circuit
+
+
+
+   
 
