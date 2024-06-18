@@ -6,6 +6,7 @@
   - [Programs](#programs)
   - [Other microcontroller features](#other-microcontroller-features)
 - [Basic elements of microcontrollers](#basic-elements-of-microcontrollers)
+- [Memory Types](#memory-types)
 
 
 
@@ -64,7 +65,29 @@
   - peripherals such as timers, event counters, PWM generators, and watchdog
   - clock generator – often an oscillator for a quartz timing crystal, resonator or RC circuit
 
+## Memory Types
+- Two different kinds of memory are commonly used with microcontrollers, **a non-volatile memory for storing firmware** and a **read-write memory for temporary data.**
+- **Non-volatile memory**
+  -  (NVM) or non-volatile storage is a type of computer memory that **can retain stored information even after power is removed.**
+  -  **EPROM, EEPROM, FLASH memory, Solid-state drive (SSD)**
+- **Volatile memory**
+  - is computer memory that requires power to maintain the stored information
+  - it retains its contents while powered on but when the power is interrupted, the stored data is quickly lost.
+  - In addition to usually **being faster than forms of mass storage** such as a hard disk drive
+  - There are two kinds of volatile RAM: **dynamic and static.**
+    - **SRAM**
+      - **Uses bistable latching circuitry** made up of **six transistors per bit to store data**. It does not need to be refreshed as long as power is supplied.
+      - SPEED: **Faster than DRAM because it does not need to be refreshed** and can be accessed more quickly.
+      - DENSITY: **Lower density because it requires more transistors per bit**, making it less efficient in terms of space.
+      - POWER CONSUMPTION: **Generally consumes less power in idle mode** but more power during active use compared to DRAM.
+      - USAGE: Typically used for **cache memory (e.g., CPU cache) where speed is critical, RAM, CACHE MEMORY L1, L2, L3, VRAM - video RAM from graphics processing**
+    - **DRAM**
+      - **Uses a capacitor and a transistor per bit to store data.** **The capacitor leaks charge** and therefore needs to be **refreshed periodically** to maintain the data.  
+      - SPEED: Slower than SRAM due to the need **for periodic refresh cycles.**
+      - DENSITY: **Higher density** because it uses fewer components per bit
+      - POWER CONSUMPTION: Consumes more power overall due to the need for **periodic refreshing.**
+      - USAGE: Commonly used for main memory.
+  
 
 
-   
 
