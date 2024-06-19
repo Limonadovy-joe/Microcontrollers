@@ -11,6 +11,7 @@
 
 
 
+
 ## Microcontroller
 - microcontroller unit (MCU)
 - is a small computer on a **single integrated circuit.** A microcontroller contains **one or more CPUs (processor cores)** along with memory and programmable **input/output peripherals.**
@@ -91,5 +92,23 @@
   
 
 ## Interaction with analog and digital signals
+- bridging the gap between the real world (analog) and the digital realm of computing and data processing.
 
+- **Analog-to-Digital Conversion (ADC)**
+  - Analog signals are continuous and can take any value within a range, while digital signals are discrete, consisting of binary values (0s and 1s).
+  - **Converting analog signals to digital involves several steps:**
+    - **Sampling: - vzorkování** The analog signal is **sampled - vzorkovany at regular intervals.** The **sampling rate must be at least twice the highest frequency component of the analog signal (Nyquist theorem)** to avoid aliasing.
+    - **Quantization- Kvantování:** Each sampled value is mapped to the nearest value within a **range of discrete levels.**
+    - **Encoding:** The **quantized values are then converted into binary format** for processing by digital systems.  
+
+- **Digital-to-Analog Conversion (DAC)**
+  - **Pulse Width Modulation (PWM):**
+    - Principle: A digital signal **switches between on and off states at a high frequency**. The **ratio of the time the signal is on (duty cycle)** to the total period determines the **average voltage.**
+  - **R-2R Ladder DAC**:
+    Principle: Utilizes a network of resistors arranged in a ladder configuration. Each bit of the digital input controls a switch that either connects the resistor to a reference voltage or ground, creating a corresponding analog output.
+     
+- **Communication Between Analog and Digital Systems**
+  - **Mixed-Signal Circuits:** These integrate both analog and digital components on a single chip, facilitating direct interaction. Examples include microcontrollers with built-in ADC and DAC.
+    **Interfaces and Protocols:** **Standards like I2C, SPI, and UART facilitate communication between analog sensors and digital processors**. **Signal conditioning circuits (e.g., amplifiers, filters)** are often used to prepare analog signals for ADC.
+    Signal Integrity and Noise: Proper design practices (e.g., shielding, grounding) are crucial to minimize noise and ensure accurate conversion and communication.
 
