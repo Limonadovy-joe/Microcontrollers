@@ -7,6 +7,7 @@
   - [Other microcontroller features](#other-microcontroller-features)
 - [Basic elements of microcontrollers](#basic-elements-of-microcontrollers)
 - [Memory Types](#memory-types)
+- [Interaction with analog and digital signals](#interaction-with-analog-and-digital-signals)
 
 
 
@@ -89,5 +90,6 @@
       - USAGE: Commonly used for main memory.
   
 
+## Interaction with analog and digital signals
 
 
