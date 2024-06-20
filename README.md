@@ -8,6 +8,9 @@
 - [Basic elements of microcontrollers](#basic-elements-of-microcontrollers)
 - [Memory Types](#memory-types)
 - [Interaction with analog and digital signals](#interaction-with-analog-and-digital-signals)
+- [Aliasing](#aliasing)
+- [Nyquistův–Shannonův vzorkovací teorém](#Nyquistův-Shannonův-vzorkovací-teorém)
+- [ESP memory management](#ESP-memory-management)
 
 
 
@@ -111,4 +114,27 @@
   - **Mixed-Signal Circuits:** These integrate both analog and digital components on a single chip, facilitating direct interaction. Examples include microcontrollers with built-in ADC and DAC.
     **Interfaces and Protocols:** **Standards like I2C, SPI, and UART facilitate communication between analog sensors and digital processors**. **Signal conditioning circuits (e.g., amplifiers, filters)** are often used to prepare analog signals for ADC.
     Signal Integrity and Noise: Proper design practices (e.g., shielding, grounding) are crucial to minimize noise and ensure accurate conversion and communication.
+
+## Aliasing
+- je jev, ke kterému může dojít při **převodu spojitého signálu na signál diskrétní čili nespojitý**. Takový převod se nazývá **vzorkování - sampling.**
+- Aby při vzorkování nedocházelo k aliasingu, musí být podle **Nyquistova–Shannonova vzorkovacího teorému** vzorkovací frekvence **větší než dvojnásobek nejvyšší frekvence harmonických složek obsažených ve vzorkovaném signálu.** Pokud tuto podmínku nesplňuje, dochází k **překrytí frekvenčních spekter vzorkovaného signálu**, a tedy ke ztrátě informace. **Harmonické složky jsou sinusové nebo kosinusové komponenty signálu, které jsou celočíselnými násobky základní frekvence.** 
+- **antialiasingový filtr**, který má za úkol **odfiltrovat frekvence vyšší, než odpovídají Nyquistovu–Shannonovu teorému.**
+- Je to dolní propust realizovaná v případě běžných A/D převodníků jako **analogový frekvenční filtr.**  
+
+## Nyquistův–Shannonův vzorkovací teorém
+- je fyzikální tvrzení o tom, **že „přesná rekonstrukce spojitého, frekvenčně omezeného signálu z jeho vzorků je možná tehdy, pokud byla vzorkovací frekvence vyšší než dvojnásobek nejvyšší harmonické složky vzorkovaného signálu.**
+- Dle Shannonova teorému je pak ideální frekvence pro vzorkování **rovna dvojnásobku maximální frekvence vyskytující se ve funkci f**. Při vzorkování s krokem menším, než **je polovina maximální frekvence, vzorkuji zbytečně moc**. Při kroku větším než polovina maximální frekvence se Fourierovy obrazy protnou a vzniká aliasing.
+
+## ESP memory management
+-a 
+
+
+
+
+
+## ESP memory management
+
+
+
+
 
