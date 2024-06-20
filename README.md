@@ -10,7 +10,10 @@
 - [Interaction with analog and digital signals](#interaction-with-analog-and-digital-signals)
 - [Aliasing](#aliasing)
 - [Nyquistův–Shannonův vzorkovací teorém](#Nyquistův-Shannonův-vzorkovací-teorém)
+- [ESP IDF](#esp-idf) 
 - [ESP memory management](#ESP-memory-management)
+- [ARM](#arm)
+- [System on chip](#system-on-chip)
 
 
 
@@ -125,14 +128,27 @@
 - je fyzikální tvrzení o tom, **že „přesná rekonstrukce spojitého, frekvenčně omezeného signálu z jeho vzorků je možná tehdy, pokud byla vzorkovací frekvence vyšší než dvojnásobek nejvyšší harmonické složky vzorkovaného signálu.**
 - Dle Shannonova teorému je pak ideální frekvence pro vzorkování **rovna dvojnásobku maximální frekvence vyskytující se ve funkci f**. Při vzorkování s krokem menším, než **je polovina maximální frekvence, vzorkuji zbytečně moc**. Při kroku větším než polovina maximální frekvence se Fourierovy obrazy protnou a vzniká aliasing.
 
+
+## ESP IDF
+- ESP-IDF stands for Espressif IoT Development Framework.
+- **Key Features of ESP-IDF:**
+  - **Comprehensive SDK**: ESP-IDF provides a comprehensive Software Development Kit (SDK) with various **components, libraries, and tools needed for developing applications for ESP32-based devices.**
+  - **FreeRTOS-based**: ESP-IDF uses FreeRTOS, an open-source **real-time operating system (RTOS), as its core**. This allows developers to create **multi-tasking applications efficiently.**
+  - **Peripheral Drivers**: ESP-IDF comes with a wide range of peripheral drivers, including **GPIO, SPI, I2C, UART, PWM, ADC, DAC, and many others**, allowing developers to interface with a variety of sensors and actuators.
+  - **Networking**: ESP-IDF supports multiple networking protocols and stacks, **such as TCP/IP, HTTP/HTTPS, MQTT, and others, enabling seamless connectivity and communication in IoT applications.**
+  - **OTA (Over-the-Air) Updates**: ESP-IDF provides built-in support for OTA updates, **allowing devices to be updated with new firmware remotely.**
+  - **Security**: ESP-IDF includes features for securing IoT applications, **such as secure boot, flash encryption, and encrypted communication protocols.**
+
 ## ESP memory management
--a 
+- ESP32 chip has multiple memory types and flexible **memory mapping features**. This section describes how ESP-IDF uses these features by default.
+- ESP-IDF distinguishes between **instruction memory bus (IRAM, IROM, RTC FAST memory)** and **data memory bus (DRAM, DROM).**
+  -  **Instruction memory bus**
+     - a  
 
 
 
 
 
-## ESP memory management
 
 
 
