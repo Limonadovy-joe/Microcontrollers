@@ -142,9 +142,32 @@
 ## ESP memory management
 - ESP32 chip has multiple memory types and flexible **memory mapping features**. This section describes how ESP-IDF uses these features by default.
 - ESP-IDF distinguishes between **instruction memory bus (IRAM, IROM, RTC FAST memory)** and **data memory bus (DRAM, DROM).**
-  -  **Instruction memory bus**
-     - a  
-
+  -  **IRAM - Instruction memory bus - SRAM**
+     - Is used to **access memory regions where the CPU fetches its instructions (code) from.**
+     - Faster access memory dedicated to holding instructions for quick execution.
+     - Usage:
+       - storing instructions (code) that need to be **executed rapidly by the CPU**.
+       - This includes **performance-critical code**, **interrupt service routines, and real-time processing tasks.**
+       - Some timing critical code may be placed into IRAM to reduce the penalty **associated with loading the code from flash.**
+       - In some cases, **placing a function into IRAM may reduce delays** caused by a cache miss and significantly improve that function's performance.
+     - Typically smaller in size compared to other memory types like IROM, **but optimized for speed.**
+  - **IROM (Code Executed from flash)**
+    - If a function is not explicitly placed into IRAM (Instruction RAM) or RTC memory, **it is placed into flash**. As IRAM is limited, **most of an application's binary code must be placed into IROM instead.**
+    - During Application Startup Flow, **the bootloader (which runs from IRAM)** configures the MMU flash cache to **map the app's instruction code region to the instruction space**. Flash accessed via the **MMU is cached using some internal SRAM** and **accessing cached flash data is as fast as accessing other types of internal memory.**
+  - **DROM - data stored in flash**
+    - By default, **constant data is placed by the linker into a region mapped to the MMU flash cache**. This is the same as the IROM (Code Executed from flash) section, **but is for read-only data not executable code.**
+    - The **only constant data not placed into this memory type by default are literal constants** which are embedded by the compiler into application code. These are placed as the **surrounding function's executable instructions.**
+    - Used for storing read-only data such as **constant arrays, lookup tables, and fixed configuration data.**
+    - The DRAM_ATTR attribute can be used to force constants from **DROM into the DRAM**
+  - **DRAM (Data RAM)**
+    - **Non-constant static data (.data) and zero-initialized data (.bss) is placed by the linker into Internal SRAM as data memory**. The remaining space in this region is used for the **runtime heap**.
+    - **Due to some memory fragmentation issues caused by ROM**, it is also not possible to **use all available DRAM for static allocations** - however the remaining DRAM is still available as heap at runtime.
+    - Constant data may also be placed into DRAM, for example if it is used in an non-flash-safe ISR
+  - **RTC memory**
+    - **Global and static variables used by code which runs from RTC memory** must be placed into RTC Slow memory.
+    - For example **deep sleep variables** can be placed here instead of RTC FAST memory.
+    
+    - The same region of RTC FAST memory can be accessed as **both instruction and data memory**. Code which has to run **after wake-up from deep sleep mode has to be placed into RTC memory.**   
 
 
 
