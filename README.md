@@ -12,6 +12,8 @@
 - [Nyquistův–Shannonův vzorkovací teorém](#Nyquistův-Shannonův-vzorkovací-teorém)
 - [ESP IDF](#esp-idf) 
 - [ESP memory management](#ESP-memory-management)
+- [DMA](#dma)
+- [ESP code memory management](#esp-code-memory-management)
 - [ARM](#arm)
 - [System on chip](#system-on-chip)
 
@@ -169,8 +171,27 @@
     
     - The same region of RTC FAST memory can be accessed as **both instruction and data memory**. Code which has to run **after wake-up from deep sleep mode has to be placed into RTC memory.**   
 
+## DMA
+- direct memory access
+- is a feature of computer systems that **allows certain hardware subsystems - IO devices, memory-to-memory** to access **main system memory independently of the central processing unit (CPU)**
+- Without DMA, when the CPU is using programmed input/output, **it is typically fully occupied for the entire duration of the read or write operation**, and is thus unavailable to perform other work. **With DMA, the CPU first initiates the transfer, then it does other operations while the transfer is in progress**, and it finally receives an interrupt from the **DMA controller (DMAC) when the operation is done.**
 
-
+## ESP code memory management
+- Specific Macros and Functions
+  - **F() Macro**
+    - Typically used in Arduino code to store **constant strings in flash memory instead of SRAM.**
+    - On ESP32, you might not need this as much because the ESP32 has more RAM than many AVR microcontrollers.
+  - **PROGMEM:**
+    - Used in AVR microcontrollers to place variables in flash memory.   
+  - **Heap Memory (Dynamically Allocated Data):**
+    - **Allocated from DRAM by default.**
+    - If PSRAM is available, the heap can be extended to use PSRAM.
+  - **Constants declared with const keyword:**
+    - By default, **they are stored in flash memory** if they are not modified and are considered constant at compile time.
+  - **Macros defined with #define:**
+    - They are not stored in any memory region because they are **replaced by their values during the preprocessing stage before compilation.**
+  - **Global Variables**
+    - **Global variables are stored in DRAM by default**, which is accessible for read/write operations.   
 
 
 
